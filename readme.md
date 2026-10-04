@@ -1,3 +1,3 @@
 learning Java Script........
 
-![alt text](<WhatsApp Image 2026-06-13 at 1.46.47 PM.jpeg>)
+<img width="1024" height="1536" alt="WhatsApp Image 2026-06-13 at 1 46 47 PM" src="https://github.com/user-attachments/assets/d27af5ff-aa42-4fc7-b508-864b37358e71" />
