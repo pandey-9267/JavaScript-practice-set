@@ -1,0 +1,72 @@
+What is JSON?
+-------------
+
+JSON stands for **JavaScript Object Notation**.
+
+JSON is a simple text format used to store and exchange data between
+applications. APIs commonly use JSON to send data from a server to a client.
+
+JSON is easy for both humans and computers to read.
+
+
+Basic JSON representation
+------------------------
+
+JSON stores data as key-value pairs:
+
+```text
+"key": "value"
+```
+
+- The key describes the data.
+- The value is the actual data.
+- A colon (`:`) separates the key and value.
+- Different key-value pairs are separated by commas.
+- Curly brackets (`{ }`) represent an object.
+
+
+Small JSON example
+------------------
+
+```json
+{
+  "name": "Aarav",
+  "age": 20,
+  "isStudent": true
+}
+```
+
+Representation of this JSON:
+
+```text
+name      → "Aarav"
+age       → 20
+isStudent → true
+```
+
+Here:
+
+- `"name"` has a string value: `"Aarav"`.
+- `"age"` has a number value: `20`.
+- `"isStudent"` has a boolean value: `true`.
+
+
+JSON array representation
+-------------------------
+
+Square brackets (`[ ]`) represent a list or array:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Laptop"
+  },
+  {
+    "id": 2,
+    "name": "Phone"
+  }
+]
+```
+
+The JSON above represents a list containing two products.
