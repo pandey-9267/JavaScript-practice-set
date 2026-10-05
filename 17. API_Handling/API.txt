@@ -323,3 +323,20 @@ In short:
 ```text
 Endpoint = API URL + resource or operation
 ```
+
+🧠 Remember this
+API
+ ↓
+Communication between applications
+
+REST
+ ↓
+A common way of designing web APIs
+
+Endpoint
+ ↓
+Specific API URL
+
+HTTP Method
+ ↓
+What operation we want
