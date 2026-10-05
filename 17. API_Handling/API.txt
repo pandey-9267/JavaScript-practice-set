@@ -155,3 +155,171 @@ Client displays the products
 
 ---------------------------------------------------------------------------------------------
 
+What is REST ?
+A REST API (Representational State Transfer Application Programming Interface) is a standardized architectural style that allows different software applications to communicate with each other over the internet.
+It acts as a bridge between a client (like a mobile app or web browser) and a server (where data is stored), 
+typically exchanging data using the lightweight JSON format.
+
+HTTP methods 
+------------
+
+HTTP methods tell the server what action the client wants to perform.
+They are also called HTTP verbs.
+
+Note: HTTP methods and HTTPS are different things. HTTPS is the secure
+version of HTTP. The methods below can be used with both HTTP and HTTPS.
+
+| Method  | Purpose                          | Example                         |
+|---------|----------------------------------|---------------------------------|
+| GET     | Read or retrieve data            | Get all products                |
+| POST    | Create new data                  | Add a new product               |
+| PUT     | Replace existing data completely | Replace product with id `1`    |
+| PATCH   | Update part of existing data     | Change only the product price   |
+| DELETE  | Remove existing data             | Delete product with id `1`     |
+| HEAD    | Get headers without the body     | Check whether a resource exists |
+| OPTIONS | Check supported methods          | Ask which methods are allowed  |
+
+Example API endpoints:
+
+```text
+GET     /products       -> Get all products
+GET     /products/1     -> Get product with id 1
+POST    /products       -> Create a new product
+PUT     /products/1     -> Replace product with id 1
+PATCH   /products/1     -> Update part of product with id 1
+DELETE  /products/1     -> Delete product with id 1
+```
+
+The main methods used in most beginner API projects are:
+
+```text
+GET     = Read
+POST    = Create
+PUT     = Replace
+PATCH   = Partially update
+DELETE  = Delete
+```
+
+
+Example : Student management system
+-----------------------------------
+
+Imagine a school application that stores student information. The client
+can use an API to create, read, update, and delete students.
+
+| HTTP method | Endpoint        | Action                         |
+|-------------|-----------------|--------------------------------|
+| GET         | `/students`     | Get a list of all students     |
+| GET         | `/students/1`   | Get the student with id `1`    |
+| POST        | `/students`     | Add a new student              |
+| PUT         | `/students/1`   | Replace student with id `1`   |
+| PATCH       | `/students/1`   | Update part of student `1`    |
+| DELETE      | `/students/1`   | Delete student with id `1`    |
+
+Example student data:
+
+```json
+{
+  "id": 1,
+  "name": "Aarav",
+  "age": 20,
+  "course": "JavaScript"
+}
+```
+
+Example `POST` request body for adding a student:
+
+```json
+{
+  "name": "Aarav",
+  "age": 20,
+  "course": "JavaScript"
+}
+```
+
+Example `PATCH` request body for changing only the course:
+
+```json
+{
+  "course": "Backend Development"
+}
+```
+
+Student management API flow:
+
+```text
+Student management application
+            │
+            │  GET /students
+            ▼
+       Student API
+            │
+            │  Reads student data
+            ▼
+       Student database
+            │
+            │  Returns JSON response
+            ▼
+Student management application
+```
+
+For example, when a teacher opens the student list:
+
+1. The application sends `GET /students`.
+2. The API asks the database for the students.
+3. The database returns the student records.
+4. The API sends the records back as JSON.
+5. The application displays the students.
+
+
+What is endpoints?
+------------------
+
+The correct singular form is **endpoint**. The plural form is **endpoints**.
+
+An endpoint is a specific URL where a client sends an API request. Each
+endpoint usually represents a resource or a particular operation.
+
+For example, in a student management API:
+
+```text
+https://school.example.com/api/students
+```
+
+- `https://school.example.com` is the server address.
+- `/api` shows that this is an API route.
+- `/students` is the endpoint for the student resource.
+
+Different HTTP methods can use the same endpoint for different actions:
+
+| Method | Endpoint                      | Meaning                    |
+|--------|-------------------------------|----------------------------|
+| GET    | `/api/students`               | Get all students           |
+| POST   | `/api/students`               | Create a new student       |
+| GET    | `/api/students/1`             | Get student with id `1`    |
+| PATCH  | `/api/students/1`             | Update student with id `1` |
+| DELETE | `/api/students/1`             | Delete student with id `1` |
+
+Endpoint request flow:
+
+```text
+Client
+  │
+  │  GET /api/students/1
+  ▼
+Student endpoint
+  │
+  │  Finds student with id 1
+  ▼
+Server / Database
+  │
+  │  Returns student data as JSON
+  ▼
+Client
+```
+
+In short:
+
+```text
+Endpoint = API URL + resource or operation
+```
