@@ -80,3 +80,78 @@ Important API terms
 - **API key:** A secret or unique value used by some APIs to identify and
   authorize a client.
 
+Example of a JSON API response
+------------------------------
+
+Suppose a client asks a product API for all available products. The server
+may return this JSON response:
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": 40000
+  },
+  {
+    "id": 2,
+    "name": "Phone",
+    "price": 20000
+  }
+]
+```
+
+This response is an array containing two product objects:
+
+- The first product has an `id` of `1`, a name of `"Laptop"`, and a price of
+  `40000`.
+- The second product has an `id` of `2`, a name of `"Phone"`, and a price of
+  `20000`.
+- `id`, `name`, and `price` are called properties or keys.
+- The values are the data stored in those keys.
+
+In JavaScript, the response can be read like this:
+
+```js
+const products = [
+    {
+        id: 1,
+        name: "Laptop",
+        price: 40000
+    },
+    {
+        id: 2,
+        name: "Phone",
+        price: 20000
+    }
+];
+
+console.log(products[0].name);  // Laptop
+console.log(products[1].price); // 20000
+
+products.forEach((product) => {
+    console.log(`${product.name}: ₹${product.price}`);
+});
+```
+
+The data flow for this example is:
+
+```text
+Client asks for products
+          │
+          ▼
+Product API / Server
+          │
+          │ returns JSON
+          ▼
+[
+  { id: 1, name: "Laptop", price: 40000 },
+  { id: 2, name: "Phone",  price: 20000 }
+]
+          │
+          ▼
+Client displays the products
+```
+
+---------------------------------------------------------------------------------------------
+
