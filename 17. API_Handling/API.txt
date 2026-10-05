@@ -1,1 +1,82 @@
-What is API..?
+What is an API?
+---------------
+API stands for Application Programming Interface.
+
+An API is a messenger between two applications. It allows one application to
+request information or send information to another application.
+
+For example, when a weather application needs today's temperature, it does not
+measure the temperature itself. It sends a request to a weather API. The API
+finds the required information and sends the result back, usually in JSON
+format.
+
+Real-life example
+-----------------
+
+Think of an API as a waiter in a restaurant:
+
+- You (the client) are the customer.
+- The menu is the API documentation.
+- Your order is the API request.
+- The kitchen is the server.
+- The food is the API response.
+- The waiter carries your request to the kitchen and brings the response back.
+
+
+API request and response flow
+
+
+
+┌──────────────────────┐
+│  Client application  │
+│  (browser / website) │
+└──────────┬───────────┘
+           │
+           │ 1. Sends a request
+           │    "Give me the weather"
+           ▼
+┌──────────────────────┐
+│       API            │
+│  (the messenger)     │
+└──────────┬───────────┘
+           │
+           │ 2. Forwards the request
+           ▼
+┌──────────────────────┐
+│       Server         │
+│  (finds the data)    │
+└──────────┬───────────┘
+           │
+           │ 3. Sends the result
+           │    temperature, wind speed, etc.
+           ▼
+┌──────────────────────┐
+│       API            │
+└──────────┬───────────┘
+           │
+           │ 4. Returns a response
+           ▼
+┌──────────────────────┐
+│  Client application  │
+│  Displays the result │
+└──────────────────────┘
+
+
+In short:
+
+
+Client ── request ──> API ── request ──> Server
+Client <─ response ── API <─ response ── Server
+
+Important API terms
+-------------------
+
+- **Client:** The application that sends a request.
+- **Server:** The computer or service that stores and processes data.
+- **Endpoint:** The specific URL where an API request is sent.
+- **Request:** The message sent to the API.
+- **Response:** The data returned by the API.
+- **JSON:** A common format used to send data between applications.
+- **API key:** A secret or unique value used by some APIs to identify and
+  authorize a client.
+
