@@ -241,3 +241,221 @@ console.log(createdUser);
 Here, `JSON.stringify(newUser)` converts the JavaScript object into JSON text
 before it is sent to the server. The server converts that JSON text back into
 data, creates the user, and returns a JSON response.
+
+
+HOW TO FETCH API + CURD
+
+What does fetch() do?
+
+Your website
+     ↓
+"Give me the products"
+     ↓
+   fetch()
+     ↓
+   API
+     ↓
+Server
+     ↓
+Data
+_______________
+GET — Read data
+```````````````
+Suppose this API exists:
+https://example.com/api/products
+
+We can request the products:
+async function getProducts() {
+    const response = await fetch(
+        "https://example.com/api/products"
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+}
+
+getProducts();
+
+The important flow is:
+```````````````````````
+fetch()
+   ↓
+Response
+   ↓
+response.json()
+   ↓
+JavaScript data
+
+Remember: response itself isn't your JSON data.
+
+__________________
+POST — Create data
+``````````````````
+Suppose we want to create a new student.
+async function createStudent() {
+
+    const student = {
+        name: "Abhinash",
+        age: 21
+    };
+
+    const response = await fetch(
+        "https://example.com/api/students",
+        {
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify(student)
+        }
+    );
+
+    const data = await response.json();
+
+    console.log(data);
+}
+
+Notice the important parts:
+method: "POST"
+
+means:
+Create something.
+
+And:
+body: JSON.stringify(student)
+
+converts the JavaScript object into a JSON string so it can be sent in the request body.
+
+____________
+PUT — Update
+`````````````
+Suppose student ID 5 needs to be updated.
+await fetch(
+    "https://example.com/api/students/5",
+    {
+        method: "PUT",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            name: "Abhinash",
+            age: 22
+        })
+    }
+);
+
+Think:
+PUT /students/5
+      ↓
+Update student #5
+
+_______________
+DELETE — Delete
+```````````````
+
+await fetch(
+    "https://example.com/api/students/5",
+    {
+        method: "DELETE"
+    }
+);
+
+That's basically saying:
+DELETE /students/5
+        ↓
+Delete student #5
+
+
+
+---------------------------------------
+CRUD
+Now everything comes together.
+CRUD means:
+C → Create → POST
+R → Read   → GET
+U → Update → PUT/PATCH
+D → Delete → DELETE
+
+Real-life student system:
+GET /students
+→ Show students
+
+POST /students
+→ Add student
+
+PUT /students/5
+→ Update student #5
+
+DELETE /students/5
+→ Delete student #5
+
+
+                    API
+                     │
+       ┌─────────────┼─────────────┐
+       │             │             │
+      GET           POST          DELETE
+       │             │             │
+      Read         Create        Delete
+       │             │             │
+       └─────────────┼─────────────┘
+                     │
+                  JSON
+                     │
+                 Frontend
+
+
+ And JavaScript uses:
+fetch()
+
+to communicate with that API.
+
+______________________
+how to throw the error 
+``````````````````````
+
+it did not automatically throw we have to create manully
+
+A 404 or 500 response does not automatically make fetch() reject.
+So in real code, check:
+if (!response.ok) {
+    throw new Error("Request failed");
+}
+
+Example:
+async function getProducts() {
+    try {
+        const response = await fetch(
+            "https://example.com/api/products"
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to fetch products");
+        }
+
+        const data = await response.json();
+
+        console.log(data);
+
+    } catch (error) {
+        console.log(error.message);
+    }
+}
+
+This combines several things you've already learned:
+async/await
+     +
+fetch
+     +
+JSON
+     +
+try/catch
+     +
+REST API
+
+That's exactly why we're learning API handling now.
