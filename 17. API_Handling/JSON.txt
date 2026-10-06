@@ -153,3 +153,91 @@ const convertedObject = JSON.parse(jsonString);
 
 console.log(convertedObject.skills[2]); // "JavaScript"
 ```
+
+
+Example API request and response
+--------------------------------
+
+Suppose we want to get a list of users from an API. The API endpoint might
+look like this:
+
+```text
+GET https://api.example.com/users
+```
+
+The client sends a `GET` request, and the server returns JSON:
+
+```json
+{
+  "success": true,
+  "users": [
+    {
+      "id": 1,
+      "name": "Aarav",
+      "email": "aarav@example.com"
+    },
+    {
+      "id": 2,
+      "name": "Meera",
+      "email": "meera@example.com"
+    }
+  ]
+}
+```
+
+In JavaScript, `fetch()` sends the request and `response.json()` converts the
+JSON response into a JavaScript object:
+
+```javascript
+async function getUsers() {
+  const response = await fetch("https://api.example.com/users");
+  const data = await response.json();
+
+  console.log(data.success);       // true
+  console.log(data.users[0].name); // Aarav
+  console.log(data.users[1].email); // meera@example.com
+}
+
+getUsers();
+```
+
+An API can also receive JSON. For example, to create a new user, the client
+can send a `POST` request:
+
+```text
+POST https://api.example.com/users
+Content-Type: application/json
+```
+
+Request body:
+
+```json
+{
+  "name": "Rohan",
+  "email": "rohan@example.com"
+}
+```
+
+The JavaScript request would look like this:
+
+```javascript
+const newUser = {
+  name: "Rohan",
+  email: "rohan@example.com"
+};
+
+const response = await fetch("https://api.example.com/users", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify(newUser)
+});
+
+const createdUser = await response.json();
+console.log(createdUser);
+```
+
+Here, `JSON.stringify(newUser)` converts the JavaScript object into JSON text
+before it is sent to the server. The server converts that JSON text back into
+data, creates the user, and returns a JSON response.
