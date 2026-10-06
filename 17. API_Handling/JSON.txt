@@ -70,3 +70,86 @@ Square brackets (`[ ]`) represent a list or array:
 ```
 
 The JSON above represents a list containing two products.
+
+-----------------------------------------------------------------
+
+JSON vs JavaScript object 
+-------------------------
+
+JSON and a JavaScript object may look similar, but they are different:
+
+| JSON |                                       JavaScript object |
+|------|                                   -------------------|
+| A text format used to exchange data. |        A value used directly by JavaScript code. |
+| Property names must use double quotes.       Property names can usually be unquoted. |
+| Strings must use double quotes. |               Strings can use single or double quotes. |
+| Supports strings, numbers, booleans, arrays, objects, and `null`. |      Can also contain functions, `undefined`, `Date` objects, and other JavaScript values. |
+| Cannot contain comments or trailing commas. |             Can contain methods and, depending on the syntax, trailing commas. |
+
+The same data looks like this:
+
+JavaScript object:
+
+```javascript
+const user = {
+  name: "Aarav",
+  age: 20,
+  isStudent: true
+};
+```
+
+JSON:
+
+```json
+{
+  "name": "Aarav",
+  "age": 20,
+  "isStudent": true
+}
+```
+
+The JavaScript object is available as a value inside the program. JSON is
+plain text, so it can be saved in a file or sent through an API.
+
+
+Converting a JavaScript object to JSON
+--------------------------------------
+
+Use `JSON.stringify()` to convert a JavaScript object into a JSON string:
+
+```javascript
+const user = {
+  name: "Aarav",
+  age: 20,
+  isStudent: true
+};
+
+const jsonUser = JSON.stringify(user);
+
+console.log(jsonUser);
+// {"name":"Aarav","age":20,"isStudent":true}
+```
+
+The result is a string, not a JavaScript object:
+
+```javascript
+console.log(typeof jsonUser); // "string"
+```
+
+Complete conversion flow
+------------------------
+
+```javascript
+const originalObject = {
+  name: "Aarav",
+  skills: ["HTML", "CSS", "JavaScript"]
+};
+
+// JavaScript object -> JSON string
+const jsonString = JSON.stringify(originalObject);
+
+// JSON string -> JavaScript object
+const convertedObject = JSON.parse(jsonString);
+
+console.log(convertedObject.skills[2]); // "JavaScript"
+```
