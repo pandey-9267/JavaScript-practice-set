@@ -26,3 +26,24 @@ Example:
 npm install express
 
 This command installs the Express.js package in the current project.
+
+
+
+
+
+
+
+
+When you create a Vite project, you may see a structure like this:
+my-project/
+├── node_modules/
+├── public/
+├── src/
+│   ├── assets/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── style.css
+├── index.html
+├── package.json
+├── package-lock.json
+└── vite.config.js
