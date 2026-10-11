@@ -47,3 +47,21 @@ my-project/
 ├── package.json
 ├── package-lock.json
 └── vite.config.js
+
+
+.env vs .env.production
+
+.env.development
+
+VITE_API_URL=http://localhost:3000
+
+
+Used by default when running Vite in development mode.
+
+
+.env.production
+
+VITE_API_URL=https://api.example.com
+
+
+Used by default for a production build.
