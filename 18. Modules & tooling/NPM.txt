@@ -84,3 +84,10 @@ package-lock.json	Yes
 node_modules/	No
 .env with local settings or secrets	No
 .env.example with placeholder values	Yes
+
+Four important Git commands
+Command	What it does
+git status	Shows changed and untracked files
+git add .	Stages changes for the next commit
+git commit -m "message"	Records a snapshot of staged changes
+git push	Sends local commits to a remote repository
