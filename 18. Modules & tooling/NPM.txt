@@ -65,3 +65,22 @@ VITE_API_URL=https://api.example.com
 
 
 Used by default for a production build.
+
+
+
+What is .gitignore
+A .gitignore file tells Git which files and folders it should normally ignore when tracking changes.
+Example .gitignore:
+node_modules/
+dist/
+.env
+.env.local
+
+What should you upload to GitHub?
+File or folder	Normally commit?
+src/	Yes
+package.json	Yes
+package-lock.json	Yes
+node_modules/	No
+.env with local settings or secrets	No
+.env.example with placeholder values	Yes
