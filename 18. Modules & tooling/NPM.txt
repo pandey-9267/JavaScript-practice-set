@@ -1,0 +1,28 @@
+What is npm? 
+
+npm stands for Node Package Manager. It is the default package manager for
+Node.js and is used to install, update, remove, and manage JavaScript
+packages and project dependencies.
+
+Common npm commands:
+
+npm init
+Creates a package.json file for a new project.
+
+npm install package-name
+Installs a package locally in the project.
+
+npm install
+Installs all dependencies listed in package.json.
+
+npm install -g package-name
+Installs a package globally on the computer.
+
+npm run script-name
+Runs a script defined in package.json.
+
+Example:
+
+npm install express
+
+This command installs the Express.js package in the current project.
